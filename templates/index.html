@@ -1,78 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Home Control</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Web App</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <header>
-        <nav>
-            <!-- Navigation menu -->
-        </nav>
-    </header>
+  <header>
+    <h1>SMART HOME CONTROLLER</h1>
+  </header>
 
-    <main>
-        <section>
-            <h1>Welcome to Smart Home Control</h1>
-            <!-- Dashboard or main control panel -->
-        </section>
+  <section class="card-container">
+    <article class="card">
+      <img src="{{ url_for('static', filename='icon_fan.png') }}" alt="Fan">
+      <div class="card-content">
+        <h3>FAN</h3>
+        <p>You can control the speed of your fan</p>
+        <form id="fan-control-form">
+          <input type="text" class="card-input-field" placeholder="Speed" name="speed">
+          <button type="submit">Control Fan</button>
+        </form>
+      </div>
+    </article>
 
-        <section>
-            <h2>Fans</h2>
-            <form id="fan-control-form">
-                <label for="fan-action">Action:</label>
-                <select id="fan-action" name="action">
-                    <option value="turn_on">Turn On</option>
-                    <option value="turn_off">Turn Off</option>
-                    <option value="set_speed">Set Speed</option>
-                </select>
-                <input type="number" id="fan-value" name="value" min="0" max="100" placeholder="Value (0-100)">
-                <button type="submit">Control Fans</button>
-            </form>
-        </section>
+    <article class="card">
+      <img src="{{ url_for('static', filename='icon_ac.png') }}" alt="Air Conditioner">
+      <div class="card-content">
+        <h3>AC</h3>
+        <p>You can control the air conditioner</p>
+        <form id="ac-control-form">
+          <select name="action">
+            <option value="turn_on">Turn On</option>
+            <option value="turn_off">Turn Off</option>
+            <option value="set_temperature">Set Temperature</option>
+          </select>
+          <input type="text" class="card-input-field" placeholder="Value" name="value">
+          <button type="submit">Control AC</button>
+        </form>
+      </div>
+    </article>
 
-        <section>
-            <h2>Lights</h2>
-            <form id="light-control-form">
-                <label for="light-action">Action:</label>
-                <select id="light-action" name="action">
-                    <option value="turn_on">Turn On</option>
-                    <option value="turn_off">Turn Off</option>
-                    <option value="set_brightness">Set Brightness</option>
-                </select>
-                <input type="number" id="light-value" name="value" min="0" max="100" placeholder="Value (0-100)">
-                <button type="submit">Control Lights</button>
-            </form>
-        </section>
+    <article class="card">
+      <img src="{{ url_for('static', filename='icon_led.png') }}" alt="LED">
+      <div class="card-content">
+        <h3>LED</h3>
+        <p>You can control the LED lights</p>
+        <form id="led-control-form">
+          <select name="action">
+            <option value="turn_on">Turn On</option>
+            <option value="turn_off">Turn Off</option>
+            <option value="set_brightness">Set Brightness</option>
+          </select>
+          <input type="text" class="card-input-field" placeholder="Value" name="value">
+          <button type="submit">Control LED</button>
+        </form>
+      </div>
+    </article>
 
-        <section>
-            <h2>Other Equipment</h2>
-            <form id="equipment-form">
-                <label for="equipment">Equipment:</label>
-                <select id="equipment" name="equipment">
-                    <option value="thermostat">Thermostat</option>
-                    <option value="security_system">Security System</option>
-                    <!-- Add more options for other equipment -->
-                </select>
-                <label for="equipment-action">Action:</label>
-                <select id="equipment-action" name="action">
-                    <option value="turn_on">Turn On</option>
-                    <option value="turn_off">Turn Off</option>
-                    <option value="set_temperature">Set Temperature</option>
-                    <!-- Add more options for other actions -->
-                </select>
-                <input type="number" id="equipment-value" name="value" placeholder="Value">
-                <button type="submit">Control Equipment</button>
-            </form>
-        </section>
-    </main>
+    <article class="card">
+      <img src="{{ url_for('static', filename='icon_bulb.png') }}" alt="Bulb">
+      <div class="card-content">
+        <h3>BULB</h3>
+        <p>You can control the bulb</p>
+        <form id="bulb-control-form">
+          <select name="action">
+            <option value="turn_on">Turn On</option>
+            <option value="turn_off">Turn Off</option>
+            <option value="set_brightness">Set Brightness</option>
+          </select>
+          <input type="text" class="card-input-field" placeholder="Value" name="value">
+          <button type="submit">Control Bulb</button>
+        </form>
+      </div>
+    </article>
 
-    <footer>
-        <!-- Footer content -->
-    </footer>
+  </section>
 
-    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  <footer>
+    <p>&copy; Team KapePaste</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>

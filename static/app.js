@@ -1,10 +1,34 @@
 document.getElementById('fan-control-form').addEventListener('submit', async (event) => {
     event.preventDefault();
-    const action = document.getElementById('fan-action').value;
-    const value = document.getElementById('fan-value').value;
+    const speed = document.querySelector('#fan-control-form input[name="speed"]').value;
 
     try {
-        const response = await fetch('/control_fans', {
+        const response = await fetch('/control_fan', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `speed=${speed}`
+        });
+
+        const data = await response.json();
+        if (data.success) {
+            console.log('Fan speed controlled successfully');
+        } else {
+            console.error('Error controlling fan speed:', data.error);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+});
+
+document.getElementById('ac-control-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const action = document.querySelector('#ac-control-form select[name="action"]').value;
+    const value = document.querySelector('#ac-control-form input[name="value"]').value;
+
+    try {
+        const response = await fetch('/control_ac', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -14,22 +38,22 @@ document.getElementById('fan-control-form').addEventListener('submit', async (ev
 
         const data = await response.json();
         if (data.success) {
-            console.log('Fans controlled successfully');
+            console.log('AC controlled successfully');
         } else {
-            console.error('Error controlling fans:', data.error);
+            console.error('Error controlling AC:', data.error);
         }
     } catch (error) {
         console.error('Error:', error);
     }
 });
 
-document.getElementById('light-control-form').addEventListener('submit', async (event) => {
+document.getElementById('led-control-form').addEventListener('submit', async (event) => {
     event.preventDefault();
-    const action = document.getElementById('light-action').value;
-    const value = document.getElementById('light-value').value;
+    const action = document.querySelector('#led-control-form select[name="action"]').value;
+    const value = document.querySelector('#led-control-form input[name="value"]').value;
 
     try {
-        const response = await fetch('/control_lights', {
+        const response = await fetch('/control_led', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -39,35 +63,34 @@ document.getElementById('light-control-form').addEventListener('submit', async (
 
         const data = await response.json();
         if (data.success) {
-            console.log('Lights controlled successfully');
+            console.log('LED controlled successfully');
         } else {
-            console.error('Error controlling lights:', data.error);
+            console.error('Error controlling LED:', data.error);
         }
     } catch (error) {
         console.error('Error:', error);
     }
 });
 
-document.getElementById('equipment-form').addEventListener('submit', async (event) => {
+document.getElementById('bulb-control-form').addEventListener('submit', async (event) => {
     event.preventDefault();
-    const equipment = document.getElementById('equipment').value;
-    const action = document.getElementById('equipment-action').value;
-    const value = document.getElementById('equipment-value').value;
+    const action = document.querySelector('#bulb-control-form select[name="action"]').value;
+    const value = document.querySelector('#bulb-control-form input[name="value"]').value;
 
     try {
-        const response = await fetch('/control_equipment', {
+        const response = await fetch('/control_bulb', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: `equipment=${equipment}&action=${action}&value=${value}`
+            body: `action=${action}&value=${value}`
         });
 
         const data = await response.json();
         if (data.success) {
-            console.log('Equipment controlled successfully');
+            console.log('Bulb controlled successfully');
         } else {
-            console.error('Error controlling equipment:', data.error);
+            console.error('Error controlling bulb:', data.error);
         }
     } catch (error) {
         console.error('Error:', error);
