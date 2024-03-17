@@ -1,10 +1,6 @@
 from flask import Flask, render_template, request, jsonify
-import smart_home_api
 
 app = Flask(__name__)
-
-# Initialize the smart home API
-# smart_home = smart_home_api.SmartHome(api_key='your_api_key')
 
 @app.route('/')
 def index():
